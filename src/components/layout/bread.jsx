@@ -18,7 +18,7 @@ export default function Bread() {
           <Route exact path="/about" render={(props) => <About {...props} />} />
           <Route
             exact
-            path="/sort"
+            path="/sorting"
             render={(props) => <Sorting {...props} />}
           />
           <Route
