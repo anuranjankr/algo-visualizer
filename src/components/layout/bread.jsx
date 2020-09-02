@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Visualize from "./Visualize";
 import About from "./About";
-import Breadcrumbs from "./Breadcrumbs";
 import Sorting from "./Sorting";
 import Bubble from "./../sort/Bubble";
 import Selection from "./../sort/Selection";
 import Merge from "./../sort/Merge";
+import Breadcrumbs from "./Breadcrumbs";
 
 export default function Bread() {
   return (

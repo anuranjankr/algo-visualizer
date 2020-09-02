@@ -81,9 +81,7 @@ export default function TemporaryDrawer() {
       <div className="app__header">
         <p>~ 𝓐𝓵𝓰𝓸𝓻𝓲𝓽𝓱𝓶&nbsp;&nbsp;𝓥𝓲𝓼𝓾𝓪𝓵𝓲𝔃𝓮𝓻 ~</p>
       </div>
-      <div>
-        <Bread />
-      </div>
+      <div>{/* <Bread /> */}</div>
 
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
