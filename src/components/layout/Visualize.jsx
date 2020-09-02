@@ -6,7 +6,7 @@ const Visualize = props => {
   return (
     <>
       <Button onClick={() => history.push("/about")}>ABOUT</Button>
-      <Button onClick={() => history.push("/sorting")}>SORTING</Button>
+      <Button onClick={() => history.push("/sort")}>SORTING</Button>
     </>
   );
 };
