@@ -1,16 +1,18 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import Bubble from "./../sort/Bubble";
-import Selection from "./../sort/Selection";
-import Merge from "./../sort/Merge";
+import "./Layout.css";
 
-const Sorting = props => {
+const Sorting = (props) => {
   const { history } = props;
   return (
     <>
-      <Button onClick={() => history.push("/sorting/bubble")}>bubble</Button>
-      <Button onClick={() => history.push("/sorting/merge")}>merge</Button>
-      <Button onClick={() => history.push("/sorting/selection")}>selection</Button>
+      <div className="app__navButtons">
+        <Button onClick={() => history.push("/sorting/bubble")}>bubble</Button>
+        <Button onClick={() => history.push("/sorting/merge")}>merge</Button>
+        <Button onClick={() => history.push("/sorting/selection")}>
+          selection
+        </Button>
+      </div>
     </>
   );
 };

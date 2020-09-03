@@ -1,11 +1,10 @@
-*{
+* {
   margin: 0;
 }
 
 .app__header > p {
   color: #222222;
   font-size: 2rem;
-  margin-bottom: 5px;
 }
 
 .app__header {
