@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+import "./../layout/Layout.css";
 
 class Bubble extends React.Component {
   constructor(props) {
@@ -6,8 +8,7 @@ class Bubble extends React.Component {
     this.state = {
       speed: 90,
       noOfBars: 8,
-      array: [],
-      arrayIndex: []
+      array: []
     };
   }
 
@@ -20,58 +21,35 @@ class Bubble extends React.Component {
     }
     // console.log({ array }, this);
     this.setState({ array });
-    this.bubbleSort();
   }
   //bubblesort_Algo
   bubbleSort() {
-    let initialArray = this.state.array.slice();
+    let initialArray = document.getElementsByClassName("elem");
     let length = initialArray.length;
     let finalArray = [];
     for (let i = 0; i < length - 1; i++) {
       for (let j = 0; j < length - i - 1; j++) {
+        initialArray[j].style.backgroundColor = "red";
+        initialArray[j + 1].style.backgroundColor = "red";
         finalArray.push(j, j + 1, 0); //0 means selected
-        if (initialArray[j] > initialArray[j + 1]) {
+        if (initialArray[j].innerHTML > initialArray[j + 1].innerHTML) {
           finalArray.push(j, j + 1, 1); //1 means swap
-          let temp = initialArray[j];
-          initialArray[j] = initialArray[j + 1];
-          initialArray[j + 1] = temp;
+          let temp = initialArray[j].innerHTML;
+          let heigh = initialArray[j].style.height;
+          let padd = initialArray[j].style.paddingTop;
+          initialArray[j].innerHTML = initialArray[j + 1].innerHTML;
+          initialArray[j].style.height = initialArray[j + 1].style.height;
+          initialArray[j].style.paddingTop =
+            initialArray[j + 1].style.paddingTop;
+          initialArray[j + 1].innerHTML = temp;
+          initialArray[j + 1].style.height = heigh;
+          initialArray[j + 1].style.paddingTop = padd;
+          initialArray[j].style.backgroundColor = "green";
+          initialArray[j + 1].style.backgroundColor = "green";
         }
         finalArray.push(j, j + 1, 2); //2 means done
-      }
-    }
-    this.setState({ arrayIndex: finalArray });
-  }
-
-  runstart() {
-    const ANIMATION_SPEED_MS = this.state.speed;
-    // const SECONDARY_COLOR = "#dc3545";
-    const third_color = "#28a745";
-
-    const animations = this.state.arrayIndex;
-    const arrayBars = document.getElementsByClassName("elem");
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, currState] = animations[i];
-      if (currState === 0) {
-        setTimeout(() => {
-          arrayBars[barOneIdx].style.backgroundColor = "rgb(197, 17, 98)";
-          arrayBars[barTwoIdx].style.backgroundColor = "rgb(197, 17, 98)";
-        }, i * ANIMATION_SPEED_MS);
-      }
-      if (currState === 1) {
-        // const barOneStyle = arrayBars[barOneIdx].style;
-        // const barTwoStyle = arrayBars[barTwoIdx].style;
-        // setTimeout(() => {
-        //   barOneStyle.backgroundColor = SECONDARY_COLOR;
-        //   arrayBars[y].innerHTML = newHeight;
-        //   barOneStyle.height = `${newHeight + 100}px`;
-        //   barOneStyle.paddingTop = `${newHeight + 75}px`;
-        // }, i * ANIMATION_SPEED_MS);
-      }
-      if (currState === 2) {
-        setTimeout(() => {
-          arrayBars[barOneIdx].style.backgroundColor = third_color;
-          arrayBars[barTwoIdx].style.backgroundColor = third_color;
-        }, i * ANIMATION_SPEED_MS);
+        initialArray[j].style.backgroundColor = "grey";
+        initialArray[j + 1].style.backgroundColor = "grey";
       }
     }
   }
@@ -84,40 +62,46 @@ class Bubble extends React.Component {
     const { array } = this.state;
     return (
       <>
-        <section className="d-flex pt-2 justify-content-center">
-          <button
+        <section className="app__navButtons">
+          <Button
             type="button"
-            className="btn btn-secondary mr-2 align-text-bottom "
-            onClick={() => this.runstart()}
+            variant="outlined"
+            color="secondary"
+            style={{ marginRight: 5 }}
+            onClick={() => this.bubbleSort()}
           >
             Start
-          </button>
-        </section>
-        <section className="d-flex pt-4 justify-content-center">
-          <button
+          </Button>
+          <Button
             type="button"
-            style={{ cursor: "default" }}
-            className="btn disabled btn-secondary mr-2 align-text-bottom "
+            variant="outlined"
+            color="secondary"
+            style={{ marginRight: 5 }}
             onClick={() => this.resetArray()}
           >
             Change Values
-          </button>
+          </Button>
         </section>
-
         <section
-          className="d-flex justify-content-center mt-4 align-items-end"
-          style={{ height: "50vh" }}
+          className="app__navButtons"
+          style={{
+            marginTop: 5,
+            marginRight: 5,
+            marginLeft: 5
+          }}
         >
           {array.map((value, idx) => (
             <button
-              type="button"
               key={idx}
+              variant="contained"
+              color="secondary"
               style={{
                 height: value + 100,
-                width: "50px",
-                paddingTop: 75 + value
+                paddingTop: 75 + value,
+                marginRight: 5,
+                flex: 2
               }}
-              className="btn btn-secondary mr-2 elem align-text-bottom "
+              className="elem"
             >
               {value}
             </button>
